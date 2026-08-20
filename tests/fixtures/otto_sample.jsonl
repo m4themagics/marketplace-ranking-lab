@@ -1,0 +1,6 @@
+{"session": 1, "events": [{"aid": 100, "ts": 1000, "type": "clicks"}, {"aid": 101, "ts": 1500, "type": "clicks"}, {"aid": 101, "ts": 1800, "type": "carts"}, {"aid": 101, "ts": 2400, "type": "orders"}]}
+{"session": 2, "events": [{"aid": 200, "ts": 1200, "type": "clicks"}]}
+{"session": 3, "events": [{"aid": 100, "ts": 1900, "type": "clicks"}, {"aid": 300, "ts": 2000, "type": "clicks"}, {"aid": 300, "ts": 2000, "type": "carts"}]}
+{"session": 4, "events": [{"aid": 400, "ts": 2000, "type": "clicks"}, {"aid": 401, "ts": 2600, "type": "clicks"}]}
+{"session": 5, "events": [{"aid": 100, "ts": 2500, "type": "clicks"}, {"aid": 100, "ts": 2500, "type": "clicks"}, {"aid": 500, "ts": 3000, "type": "orders"}]}
+{"session": 6, "events": [{"aid": 600, "ts": 3200, "type": "clicks"}, {"aid": 601, "ts": 3300, "type": "carts"}]}

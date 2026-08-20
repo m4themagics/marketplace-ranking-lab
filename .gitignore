@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Data & artifacts (large / reproducible)
+data/raw/
+data/processed/
+data/interim/
+artifacts/
+*.parquet
+*.faiss
+*.npy
+*.bin
+*.txt.gz
+
+# HF cache
+.cache/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Private working notes (never committed)
+*.local.md

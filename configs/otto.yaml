@@ -1,0 +1,40 @@
+# Baseline configuration for the OTTO dataset.
+# Nulls are decisions that must be made and documented, not defaults to inherit.
+
+project:
+  seed: 42
+  phase: 1
+
+data:
+  dataset: otto
+  source: null          # TODO: pin the exact download URL and revision
+  raw_dir: data/raw
+  processed_dir: data/processed
+  # OTTO event schema: session, aid, ts, type
+  session_column: session
+  item_column: aid
+  timestamp_column: ts
+  event_type_column: type
+
+split:
+  # Prefer explicit timestamps over ratios: a ratio silently changes meaning when the
+  # dataset is re-downloaded.
+  train_end: null
+  valid_end: null
+  straddling_sessions: null   # drop | truncate | keep — decide before implementing
+
+relevance:
+  # Graded relevance across the three outcome types. These weights are a modelling
+  # choice and every reported metric depends on them, so they belong in the config.
+  click: 1.0
+  cart: 3.0
+  order: 6.0
+
+evaluation:
+  cutoffs: [20, 100]
+  bootstrap_repetitions: null   # decide before the first confirmatory run
+  bootstrap_unit: session
+  slices:
+    - cold_session       # short history
+    - cold_item          # item unseen in train
+    - tail_item          # bottom of the catalog by frequency

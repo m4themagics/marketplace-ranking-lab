@@ -1,0 +1,17 @@
+source: https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations
+fetched_at: 2026-08-20
+sampling: full contents of the two required competition files; no row sampling
+timestamp_semantics: purchase date; not an impression or catalogue-entry timestamp
+catalogue_arrival_proxy: first observed transaction per item
+known_missing_data:
+  - impressions
+  - positions
+  - logging propensities
+  - actual catalogue-entry timestamps
+files:
+  articles.csv:
+    bytes: 36127865
+    sha256: 25f21882053517f7684ea43f524225a9481a7bb9aab9cf0abfc7fe8c4576a72b
+  transactions_train.csv:
+    bytes: 3488002253
+    sha256: fff5e3b35c1b26016aa0bf2231be9525bc766eed32c94f1653420b465aef84fa

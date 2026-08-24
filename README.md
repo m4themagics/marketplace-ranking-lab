@@ -22,6 +22,8 @@ depends on.
 
 ## Status
 
+**Portfolio status: active flagship for Search, Ranking & Recommendations.**
+
 **Nothing is trained yet.** H&M is downloaded locally and fixed for experiments 01–04; its
 viability for the post-week-12 flagship remains unmeasured. Raw data is never committed.
 The honest state, updated as it changes:

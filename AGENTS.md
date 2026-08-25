@@ -46,10 +46,17 @@ If you are unsure whether something is a core exercise, it is: ask before implem
 
 ## State
 
-The dataset kill-test ([experiment 00](experiments/00_dataset_viability/README.md)) is written
-and waiting on data — nothing downstream starts until it passes. `make fetch-hm` pulls the two
-H&M files; it needs a Kaggle token in `~/.kaggle/access_token` and the competition rules
-accepted on the site.
+H&M is downloaded and fingerprinted ([`data/hm_snapshot.yaml`](data/hm_snapshot.yaml)); raw
+files are on disk and never committed. `make fetch-hm` re-pulls them on a clean checkout and
+needs a Kaggle token in `~/.kaggle/access_token` plus the competition rules accepted on the
+site.
 
-`src/mrl/data/otto.py` and `configs/otto.yaml` are held for the fallback dataset and get
-deleted once H&M is committed to.
+The dataset kill-test ([experiment 00](experiments/00_dataset_viability/README.md)) is
+preregistered and its runner is scaffolded, but it has not produced a number: the blocker is
+`permutation_null_band` in `data/viability.py`, an author exercise. Experiments 01-04 are
+designed and unstarted; the metric core and the temporal split are still stubs.
+
+`src/mrl/data/otto.py` and `configs/otto.yaml` are leftovers from the OTTO format. A failed
+criterion A or B no longer switches the project to Amazon — 01-04 continue on H&M either way,
+so these two files get deleted by a separate mechanical change after the first reproducible
+H&M run.

@@ -53,10 +53,11 @@ site.
 
 The dataset kill-test ([experiment 00](experiments/00_dataset_viability/README.md)) is
 preregistered and its runner is scaffolded, but it has not produced a number: the blocker is
-`permutation_null_band` in `data/viability.py`, an author exercise. Experiments 01-04 are
-designed and unstarted; the metric core and the temporal split are still stubs.
+`permutation_null_band` in `data/viability.py`, an author exercise. Experiments 02-04 are
+designed and unstarted; optional Experiment 05 is blocked until the 96-hour core closes. The
+metric core and the temporal split are still stubs.
 
 `src/mrl/data/otto.py` and `configs/otto.yaml` are leftovers from the OTTO format. A failed
-criterion A or B no longer switches the project to Amazon — 01-04 continue on H&M either way,
+criterion A or B no longer switches the project to Amazon — 02-05 continue on H&M either way,
 so these two files get deleted by a separate mechanical change after the first reproducible
 H&M run.

@@ -1,12 +1,13 @@
-# 01 — What logged basket value is captured as relevance changes?
+# 05 — Can a calibrated value objective improve the list without violating UX guardrails?
 
-**Status:** design fixed, not yet run. Depends on the split, the metrics, and the
-ALS + LambdaRank baseline being in place.
+**Status:** design revised before any run on 2026-08-26; blocked until the 96-hour core closes.
+This is an optional additional six-hour experiment.
 
 ## Question
 
-When item value is given more weight, how does the share of observed basket value captured in
-top 12 change relative to NDCG@12, and which policies lie on the Pareto frontier?
+When a calibrated expected-basket-value proxy is introduced as a second objective, how does
+captured logged basket value@12 change relative to relevance and UX guardrails? Which
+scalarised or constrained policies remain non-dominated?
 
 This is deliberately narrower than “how much revenue will the policy make?”. H&M has purchases,
 but no impression log, propensities or online randomisation. The experiment measures an offline
@@ -28,8 +29,9 @@ The distinction the design rests on:
   would otherwise discard.
 
 This does not imply that every item objective should be folded into one score. Scalarisation,
-multi-task heads and constrained optimisation are different policy families; the experiment
-implements only scalarisation and explains the other two.
+multi-task heads and constrained optimisation are different policy families. This bounded
+experiment compares scalarisation with one constrained list-construction policy; it does not
+open a new modelling or auctions track.
 
 ## Calibration contract
 
@@ -53,9 +55,15 @@ relevance.
 - **Unit of observation:** one customer-day. Purchases on that day are the logged positives.
 - **Candidates:** the baseline ALS pool, unchanged across the sweep, so the experiment varies
   ordering rather than retrieval.
-- **Score:** `p_proxy ^ α · price ^ β`, with `α = 1` and a preregistered non-negative grid for
-  `β`. Multiplication keeps both factors positive; it does not make the proxy causal.
-- **Relevance metrics:** NDCG@12 and Recall@12.
+- **Baseline:** relevance-only LambdaRank ordering.
+- **Scalarised policy:** `p_proxy ^ α · price ^ β`, with `α = 1` and a preregistered
+  non-negative grid for `β`. Multiplication keeps both factors positive; it does not make the
+  proxy causal.
+- **Constrained policy:** construct top 12 from the same scored pool under a garment-group cap.
+  The cap grid and all guardrail thresholds remain `UNSET` until the protocol is frozen before
+  the first run; no test result may be used to choose them.
+- **UX guardrails:** NDCG@12, Recall@12, catalogue coverage@12 and top-12 garment-group
+  concentration. Report local reranking runtime separately; it is not an online latency claim.
 - **Value metric:** captured logged basket value@12 — the summed price of observed purchased
   items in top 12 divided by the observed basket value for that customer-day. Queries with no
   logged purchase are outside this conditional metric and their coverage is reported.
@@ -67,12 +75,26 @@ relevance.
   non-dominated Pareto frontier.
 - Report effect sizes and paired intervals relative to baseline; do not call an offline value
   delta “revenue uplift”.
-- Price correlates with product group, so publish top-12 garment-group composition at the
-  baseline, a middle Pareto point and the value-heavy endpoint.
+- Publish scalarised and constrained points on the same relevance/value plane. Infeasible
+  constrained lists remain explicit; they are not silently filled from an unconstrained list.
+- Price correlates with product group, so publish coverage and top-12 garment-group composition
+  at the baseline, a middle Pareto point and the value-heavy endpoint.
 - If the apparent trade-off is entirely a category-composition change, that mechanism is the
   finding.
 - The conclusion must name missing impressions, exposure bias and the fact that an online
   policy changes its own future training distribution.
+
+## A/B design — written, not simulated
+
+The final note defines a future online test without pretending to run one:
+
+- customer-level randomisation, eligibility and exposure logging;
+- revenue per eligible user as the primary metric;
+- conversion, average order value, engagement, diversity, complaints and p95 latency as
+  secondary/guardrail metrics;
+- power and duration assumptions, sample-ratio-mismatch checks, novelty and carry-over risks;
+- segment analysis and an explicit decision rule for value gain with a failed UX guardrail;
+- shadow, canary, A/B and rollback responsibilities kept distinct.
 
 ## Outcomes
 
@@ -82,8 +104,18 @@ relevance.
 | Flat region before a knee | Some logged basket value is recovered without a detectable relevance loss; online impact remains unknown. |
 | Entirely a category shift | The mechanism is composition, not evidence of general value optimisation. |
 | Poor calibration | The scalarised proxy is invalid; fix calibration before interpreting the sweep. |
+| Constrained policy protects UX but loses value | The constraint has a measurable cost; do not weaken it post hoc. |
+| Value rises while a UX guardrail fails | Reject that policy; conflicting metrics are the result, not noise to hide. |
 | Irregular raw curve | Keep every point and report the Pareto frontier; irregularity alone is not a calibration diagnosis. |
 
-## Run
+## Stop rule
 
-Not yet runnable — no split, metrics, calibration or baseline.
+Stop after six hours with one comparison table, a calibration/guardrail audit and the written
+A/B design, even if the result is negative or thresholds remain infeasible. Pacing, bidding,
+auctions and budget allocation stay deferred.
+
+## Run gate
+
+Not runnable before the 96-hour core closes. At activation, fill every `UNSET` value in a
+separate protocol before looking at a test result; the split, metrics, calibration population
+and ALS + LambdaRank baseline must already exist.

@@ -41,7 +41,7 @@
 | temporal split на новом датасете | инфраструктура | 0 | |
 | ranking metrics и bootstrap | инфраструктура | 0 | |
 | user-level uncertainty и paired bootstrap | инфраструктура | 0 | |
-| multi-objective и обменный курс | 01 | 0 | |
+| multi-objective и обменный курс | 05 | 0 | blocked by the 96-hour core |
 | PyTorch training loop | трек | 0 | |
 | эмбеддинги и in-batch negatives | трек | 0 | |
 | Two-Tower против классического | 02 | 0 | |

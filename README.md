@@ -10,8 +10,8 @@ that has a number for an answer.
 The classical two-stage recommender — ALS candidates, gradient-boosted ranker on top — is the
 baseline, not the achievement: it is what the author already runs in production. What gets
 built here is what production does not have: a neural retriever measured against that
-baseline, an ANN index measured against exact search, an explicit relevance/value proxy
-trade-off curve, and finally the question the lab is named for.
+baseline, an ANN index measured against exact search, and an explicit offline-to-online
+operational defence. One bounded relevance/value experiment is retained only after that core.
 
 > **Flagship question.** How well does a fixed content codebook generalise to future item
 > cohorts under temporal distribution shift — and when does rebuilding it start to pay for
@@ -25,22 +25,25 @@ depends on.
 **Portfolio status: active flagship for Search, Ranking & Recommendations.** The
 binding Must is 96 hours.
 
-**Nothing is trained yet.** H&M is downloaded locally and fixed for experiments 01–04; its
-viability for the post-week-12 flagship remains unmeasured. Raw data is never committed.
+The 96-hour Must ends with operational defence. Experiment 05 is an optional **additional six
+hours after the core**. It does not open an auctions track.
+
+**Nothing is trained yet.** H&M is downloaded locally and fixed for experiments 02–05; its
+viability for the later codebook work remains unmeasured. Raw data is never committed.
 The honest state, updated as it changes:
 
 | | What | State |
 |---|---|---|
 | 00 | Does the catalogue turn over enough to support the flagship? | data fetched; central permutation exercise pending |
 | — | Temporal split, metrics, ALS + LambdaRank baseline | not started |
-| 01 | What logged basket value is captured as relevance changes? | design fixed, not started |
 | 02 | What does a two-tower add over ALS retrieval? | not started |
 | 03 | What does exact → ANN cost in recall, latency, memory? | not started |
-| 04 | Where do exposure and position bias enter the system? | not started |
+| 04 | Where do biases enter, and how is the online path operated and defended? | writing scaffolded, not started |
+| 05 | Can a calibrated value objective improve the list without violating UX guardrails? | optional after the 96-hour core |
 
 Order and reasoning: [development plan](docs/development-plan.md). Experiment 00 is a
 kill-test for the post-week-12 codebook work. If catalogue renewal is too weak, experiments
-01–04 still run on H&M, while 05–06 remain closed rather than having their premise softened.
+02–05 still use H&M, while 06–07 remain closed rather than having their premise softened.
 
 ## What exists today
 
@@ -60,7 +63,7 @@ docstrings — see [LEARNING.md](LEARNING.md) for why they are stubs and not gen
 ## Data
 
 [H&M Personalized Fashion Recommendations](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations)
-— the working dataset for experiments 01–04: real purchase transactions over roughly two
+— the working dataset for experiments 02–05: real purchase transactions over roughly two
 years, with product images, text attributes, and a price on every transaction. Experiment 00
 decides only whether it also supports the later codebook-drift question.
 

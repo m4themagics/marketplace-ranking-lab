@@ -48,7 +48,7 @@ def flagship_gates(
     product_renewal: float,
     new_item_transaction_share: float,
 ) -> dict[str, bool]:
-    """Return the only two gates that decide whether experiments 05–06 are viable.
+    """Return the only two gates that decide whether experiments 06–07 are viable.
 
     Content shift is deliberately absent: criterion C is a measurement whose low and high
     outcomes are both informative, not a reason to reject the earlier ranking experiments.

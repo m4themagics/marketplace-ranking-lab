@@ -4,7 +4,7 @@
 Criteria last amended 2026-08-20, before any data existed locally.
 
 This experiment exists to kill the **flagship codebook-drift question** cheaply if its premise
-is false. It runs before H&M is committed to experiments 05–06. Experiments 01–04 do not
+is false. It runs before H&M is committed to experiments 06–07. Experiments 02–05 do not
 depend on catalogue renewal and continue on H&M under either verdict.
 
 ## Question
@@ -42,7 +42,7 @@ writing them down now is that they cannot be adjusted after the numbers are seen
 originally a third blocking criterion. It is not one. A catalogue that renews while staying
 self-similar is a perfectly good setting for the flagship question — it predicts that a frozen
 quantiser generalises, which the experiment then confirms or refutes. A/B now gate only
-experiments 05–06; the earlier ranking experiments remain valid without catalogue renewal.*
+experiments 06–07; the earlier ranking experiments remain valid without catalogue renewal.*
 
 **A — Product-level renewal.** Among `product_code`s transacted in the final six months, at
 least **20%** were first seen in that final six-month window.
@@ -70,9 +70,9 @@ substantially weaker for this hypothesis than it appears.
 
 | Result | Action |
 |---|---|
-| A and B pass, C high | Open experiments 05–06 on H&M and record the high-shift hypothesis. |
-| A and B pass, C inside the null band | Open experiments 05–06 on H&M and record the prediction that a frozen quantiser should generalise well. |
-| A or B fails | Continue experiments 01–04 on H&M; keep 05–06 closed and choose any replacement dataset later. |
+| A and B pass, C high | Open experiments 06–07 on H&M and record the high-shift hypothesis. |
+| A and B pass, C inside the null band | Open experiments 06–07 on H&M and record the prediction that a frozen quantiser should generalise well. |
+| A or B fails | Continue experiments 02–05 on H&M; keep 06–07 closed and choose any replacement dataset later. |
 
 ## Run
 

@@ -22,15 +22,9 @@ depends on.
 
 ## Status
 
-**Portfolio status: active flagship for Search, Ranking & Recommendations.** The
-binding Must is 96 hours.
-
-The 96-hour Must ends with operational defence. Experiment 05 is an optional **additional six
-hours after the core**. It does not open an auctions track.
-
-**Nothing is trained yet.** H&M is downloaded locally and fixed for experiments 02–05; its
+**Work in progress — nothing is trained yet.** H&M is downloaded locally and fixed for experiments 02–05; its
 viability for the later codebook work remains unmeasured. Raw data is never committed.
-The honest state, updated as it changes:
+Current state:
 
 | | What | State |
 |---|---|---|
@@ -39,10 +33,10 @@ The honest state, updated as it changes:
 | 02 | What does a two-tower add over ALS retrieval? | not started |
 | 03 | What does exact → ANN cost in recall, latency, memory? | not started |
 | 04 | Where do biases enter, and how is the online path operated and defended? | writing scaffolded, not started |
-| 05 | Can a calibrated value objective improve the list without violating UX guardrails? | optional after the 96-hour core |
+| 05 | Can a calibrated value objective improve the list without violating UX guardrails? | optional, after 00–04 |
 
 Order and reasoning: [development plan](docs/development-plan.md). Experiment 00 is a
-kill-test for the post-week-12 codebook work. If catalogue renewal is too weak, experiments
+kill-test for the later codebook work. If catalogue renewal is too weak, experiments
 02–05 still use H&M, while 06–07 remain closed rather than having their premise softened.
 
 ## What exists today
